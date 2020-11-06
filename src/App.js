@@ -1,5 +1,10 @@
 import React from "react";
-import Hello from "./Hello";
+// import Hello from "./Hello";
+import Wrapper from "./Wrapper";
+// import Counter from "./Counter";
+import InputSample from "./Input";
+import InputSampleMulti from "./MultiInputs";
+
 import "./App.css";
 
 function App() {
@@ -8,16 +13,14 @@ function App() {
     //LIKE vue, styles are camelcasaed.
     backgroundColor: "black",
     color: "aqua",
-    fontSize: 24, // 기본 단위 px
-    padding: "1rem" // 다른 단위 사용 시 문자열로 설정
+    fontSize: 24,
+    padding: "1rem" //when using a different dimension than pixel, "" required
   };
 
   return (
-    <>
-      <Hello />
-      <div style={style}>{name}</div>
-      <div className="gray-box">wow</div>
-    </>
+    <Wrapper>
+      <InputSampleMulti />
+    </Wrapper>
   );
 }
 
