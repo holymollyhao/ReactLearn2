@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
   const name = "react";
+
   const style = {
     //LIKE vue, styles are camelcasaed.
     backgroundColor: "black",
@@ -16,6 +17,11 @@ function App() {
     fontSize: 24,
     padding: "1rem" //when using a different dimension than pixel, "" required
   };
+
+  const userList = [];
+  function addUser(id, email) {
+    userList = [...userList, { id: id, email: email }];
+  }
 
   return (
     <Wrapper>

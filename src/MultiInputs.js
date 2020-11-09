@@ -24,12 +24,12 @@ function InputSampleMulti() {
 
   return (
     <div>
-      <input name="name" onChange={onChange} value={inputs.name} />
-      <input name="pass" onChange={onChange} value={inputs.pass} />
+      <input name="id" onChange={onChange} value={inputs.name} />
+      <input name="email" onChange={onChange} value={inputs.pass} />
       <button onClick={onReset}>erase all </button>
       <div>
         <li> id : {inputs.name}</li>
-        <li> pass : {inputs.pass}</li>
+        <li> email : {inputs.pass}</li>
       </div>
     </div>
   );
