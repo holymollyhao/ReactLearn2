@@ -1,21 +1,14 @@
 import React, { useState } from "react";
+import addUser from "./App";
 
-function InputSampleMulti() {
+function InputSampleMulti(addUser) {
   const [inputs, setInputs] = useState({
     name: "",
-    pass: ""
+    email: ""
   });
 
-  const onChange = (e) => {
-    const { value, name } = e.target;
-    setInputs({
-      // this fucntion changes "inputs" itself
-      ...inputs,
-      [name]: value
-    });
-  };
-
-  const onReset = () => {
+  const onAdd = (name, email, addUser) => {
+    addUser(name, email);
     setInputs({
       name: "",
       pass: ""
@@ -24,9 +17,9 @@ function InputSampleMulti() {
 
   return (
     <div>
-      <input name="id" onChange={onChange} value={inputs.name} />
-      <input name="email" onChange={onChange} value={inputs.pass} />
-      <button onClick={onReset}>erase all </button>
+      <input name="id" value={inputs.name} />
+      <input name="email" value={inputs.email} />
+      <button onClick={onAdd(inputs.name, inputs.email)}>Add user </button>
       <div>
         <li> id : {inputs.name}</li>
         <li> email : {inputs.pass}</li>

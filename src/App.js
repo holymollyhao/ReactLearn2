@@ -1,31 +1,56 @@
-import React from "react";
-// import Hello from "./Hello";
+import React, { useState, useRef } from "react";
 import Wrapper from "./Wrapper";
-// import Counter from "./Counter";
-import InputSample from "./Input";
-import InputSampleMulti from "./MultiInputs";
+import Userinput from "./Userinput";
+import Userslist from "./Userslist";
 
 import "./App.css";
 
 function App() {
-  const name = "react";
+  const [inputs, setInputs] = useState({
+    id: "",
+    username: "",
+    email: ""
+  });
+  const [usersList, setUserslist] = useState([]);
 
-  const style = {
-    //LIKE vue, styles are camelcasaed.
-    backgroundColor: "black",
-    color: "aqua",
-    fontSize: 24,
-    padding: "1rem" //when using a different dimension than pixel, "" required
-  };
+  const { username, email } = inputs;
+  const nextid = useRef(0);
 
-  const userList = [];
-  function addUser(id, email) {
-    userList = [...userList, { id: id, email: email }];
+  function addUser() {
+    const user = {
+      id: nextid.current,
+      username: username,
+      email: email
+    };
+    setUserslist([...usersList, user]);
+    nextid.current = nextid.current + 1;
+    setInputs({
+      username: "",
+      email: ""
+    });
+  }
+
+  function removeUser() {
+    setUserslist(usersList.filter((user) => user.username !== username));
+  }
+
+  function onChange(e) {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
   }
 
   return (
     <Wrapper>
-      <InputSampleMulti />
+      <Userinput
+        username={username}
+        email={email}
+        addUser={addUser}
+        onChange={onChange}
+      />
+      <Userslist users={usersList} removeUser={removeUser} />
     </Wrapper>
   );
 }
