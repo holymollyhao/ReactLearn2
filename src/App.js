@@ -7,7 +7,6 @@ import "./App.css";
 
 function App() {
   const [inputs, setInputs] = useState({
-    id: "",
     username: "",
     email: ""
   });
@@ -20,18 +19,28 @@ function App() {
     const user = {
       id: nextid.current,
       username: username,
-      email: email
+      email: email,
+      active: false
     };
+    console.log(user);
     setUserslist([...usersList, user]);
-    nextid.current = nextid.current + 1;
+    nextid.current += 1;
     setInputs({
       username: "",
       email: ""
     });
   }
 
-  function removeUser() {
-    setUserslist(usersList.filter((user) => user.username !== username));
+  function removeUser(id) {
+    setUserslist(usersList.filter((user) => user.id !== id));
+  }
+
+  function toggleUser(id) {
+    setUserslist(
+      usersList.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
   }
 
   function onChange(e) {
@@ -50,7 +59,11 @@ function App() {
         addUser={addUser}
         onChange={onChange}
       />
-      <Userslist users={usersList} removeUser={removeUser} />
+      <Userslist
+        users={usersList}
+        removeUser={removeUser}
+        toggleUser={toggleUser}
+      />
     </Wrapper>
   );
 }
