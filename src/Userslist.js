@@ -50,4 +50,4 @@ function Userslist({ users, removeUser, toggleUser }) {
   );
 }
 
-export default Userslist;
+export default React.memo(Userslist);
