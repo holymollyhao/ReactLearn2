@@ -1,11 +1,8 @@
 {
-  "name": "react",
+  "name": "reactlearn2",
   "version": "1.0.0",
-  "description": "React example starter project",
-  "keywords": [
-    "react",
-    "starter"
-  ],
+  "description": "",
+  "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "immer": "7.0.14",
